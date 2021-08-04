@@ -30,6 +30,29 @@ public class MinHeap<E extends Comparable<E>> {
         data = new Array<>();
     }
 
+    /**
+     * 传入数组建堆
+     * @param array
+     */
+    public MinHeap(E[] array){
+        this(array.length);
+        //所有元素入堆
+        for(int i=0; i<array.length; i++){
+            data.addLast(array[i]);
+        }
+        heapify();
+    }
+
+    /**
+     * 建堆
+     */
+    private void heapify(){
+        //最后一层的不需要shiftdown 从最后一个元素的父节点开始即可
+        for(int i=parent(data.getSize()-1); i>=0; i--){
+            shiftDown(i);
+        }
+    }
+
     //================================获取底层数组大小===========================
 
     /**
